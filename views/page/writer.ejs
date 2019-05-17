@@ -1,0 +1,87 @@
+<%include ../layout/header%>
+<div class="zm-section bg-white ptb-70">
+    <div class="container">
+        <div class="row mb-40">
+            <div class="col-md-12 col-sm-12 col-lg-12 col-xs-12">
+                <div class="section-title">
+                    <h2 class="h6 header-color header-table-viewlistwrite inline-block uppercase">Danh sách bài viết</h2>
+                </div>
+            </div>
+        </div >
+        <div class="viewlistwrite">
+            <table class="table table-bordered table-viewlistwrite">
+                <thead class="thead-dark">
+                    <tr>
+                    <th scope="col">Thứ tự</th>
+                    <th scope="col">Tên bài viết</th>
+                    <th scope="col">Đã được duyệt & chờ xuất bản</th>
+                    <th scope="col">Đã xuất bản</th>
+                    <th scope="col">Bị từ chối</th>
+                    <th scope="col">Chưa được duyệt</th>
+                    <th scope="col">Hiệu chỉnh</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th scope="row">1</th>
+                        <td>Mark</td>
+                        <td><i class="fas fa-check-circle"></i></td>
+                        <td><i class="fas fa-check-circle"></i></td>
+                        <td><i class="fas fa-check-circle"></i></td>
+                        <td><i class="fas fa-check-circle"></i></td>
+                        <td><button class="btn btn-danger">Chỉnh sửa</button></td>
+                    </tr>
+                    
+                </tbody>
+            </table>
+            <div class="btnsuccess">
+                <button class="btn btn-success">Rút gọn</button>
+            </div>
+        </div>
+        <div class="row mb-40">
+            <div class="col-md-12 col-sm-12 col-lg-12 col-xs-12">
+                <div class="section-title">
+                    <h2 class="h6 header-color inline-block uppercase">Đăng bài viết</h2>
+                </div>
+            </div>
+        </div >
+        <form>
+            <div class="row">
+                <div class="col-md-12 col-sm-12 col-lg-3 col-xs-12">  
+                    <div class="form-group">
+                        <label>Tiêu đề</label>
+                        <input type="text" class="form-control" placeholder="Nhập tiêu đề...">
+                    </div>
+                    <div class="form-group">
+                        <label>Nội dung tóm tắt</label>
+                        <input type="text" class="form-control" placeholder="Nhập nội dung tóm tắt...">
+                    </div>
+                    <div class="form-group">
+                        <div>
+                            <label>Chuyên mục</label>
+                            <select id="inputState" class="form-control">
+                                <option selected>Kinh doanh</option>
+                                <option>Thể thao</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Nhãn tag</label>
+                        <input type="text" class="form-control" placeholder="Tag...">
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-12 col-sm-12 col-lg-12 col-xs-12 ml-100 xs-ml-150">
+                            <button type="submit" class="btn btn-primary">Đăng bài</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-12 col-sm-12 col-lg-9 col-xs-12">
+                    <script src="ckeditor/ckeditor.js"></script>
+                    <label>Nội dung</label>
+                    <textarea class="ckeditor" name="editor"></textarea>
+                </div>
+            </div>            
+        </form>
+    </div>
+</div>
+<%include ../layout/footer%>

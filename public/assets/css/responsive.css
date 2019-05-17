@@ -18,6 +18,9 @@
     .container{
       width: 1370px;
     }
+    .login-form-wrap {
+      margin: auto;
+    }
   }
   
   /* Normal desktop :1920px. */
@@ -26,12 +29,18 @@
       width: 1350px;
       /*add 20 px*/
     }
+    .login-form-wrap {
+      margin: auto;
+    }
   }
   
   /* Normal desktop :1170px to 1365px. */
   @media (min-width: 1170px) and (max-width: 1365px) {
   .container{
     width: 1250px;
+  }
+  .login-form-wrap {
+    margin: auto;
   }
   .zm-trending-post.zm-lay-c .zm-post-title {
     font-size: 18px;
@@ -83,6 +92,9 @@
   @media (min-width: 992px) and (max-width: 1169px) {
   .header-mdh {
     height: 120px;
+  }
+  .login-form-wrap {
+    margin: auto;
   }
   .primary-menu ul li a {
     font-size: 12px;
@@ -216,6 +228,9 @@
   div.style-customizer {
     top: 60%!important;
   }
+  .login-form-wrap {
+    margin: auto;
+  }
   .blog-flex-sm{display:flex;flex-wrap:wrap}
   .header-top-menu.zm-secondary-menu {
       text-align: center;
@@ -340,8 +355,8 @@
       margin-bottom: 15px;
   }
   .login-form-wrap {
-    right: -25px;
-    top: 44px;
+    width: 350px;
+    margin: auto;
   }
   .header-middle-area {
       text-align: center;
@@ -658,8 +673,7 @@
     margin-bottom: 0px;
   }
   .login-form-wrap {
-    right: 0px;
-    top: 44px;
+    margin: auto;
   }
   .trend-post-list .zm-post-meta ul li.s-meta:last-child {
       display: none;

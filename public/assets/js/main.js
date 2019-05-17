@@ -438,18 +438,21 @@
     /*-------------------------------------------
         20. Login wrapper
     --------------------------------------------- */
-    $('.login-btn').on('click', function(){
-        if($(this).siblings('.login-form-wrap').hasClass('active')){
-            $(this).siblings('.login-form-wrap').removeClass('active').slideUp();
-            $(this).removeClass('active');
-        }
-        else{
-            $('.login-btn .login-form-wrap').removeClass('active').slideUp();
-            $(this).addClass('active');
-            $(this).siblings('.login-form-wrap').addClass('active').slideDown();
-        }
-    });
 
+    $('.login-btn').on('click', function(){
+    
+        $('.wrapper').addClass('fixed');
+        $('.login-form-wrap').addClass('show-login');
+        $('.login-form-wrap-mobile').addClass('show-login');
+        $('.fullscreen-black').addClass('show-fullscreen-black');
+
+    });
+    $('.fullscreen-black').on('click',function(){
+        $('.fullscreen-black').removeClass('show-fullscreen-black');
+        $('.login-form-wrap').removeClass('show-login');
+        $('.login-form-wrap-mobile').removeClass('show-login');
+        $('.wrapper').removeClass('fixed');
+    });
     /*-------------------------------------------
         21. Search
     --------------------------------------------- */
@@ -563,4 +566,35 @@
     --------------------------------------------- */
     //$("img").lazyload();
 
+    //writer
+    $('.header-table-viewlistwrite').on('click',function(){
+        $('.viewlistwrite').toggleClass('show-viewlistwrite');
+    });
+    $('.btnsuccess').on('click',function(){
+        $('.viewlistwrite').removeClass('show-viewlistwrite');
+
+    });
+    
+
+    //editor
+    $('.btn-reject').on('click',function(){
+        if($(this).html()==="Từ chối"){
+            $(this).html('Không từ chối');
+        }
+        else{
+            $(this).html('Từ chối')
+        }
+        $('.reject').toggleClass('show-reject');
+    });
+
+    $('.btn-ok').on('click',function(){
+        $('.wrapper').addClass('fixed');
+        $('.fullscreen-black').addClass('show-fullscreen-black');
+        $('.form-success').addClass('show-form-success');
+    });
+    $('.fullscreen-black').on('click',function(){
+        $('.wrapper').removeClass('fixed');
+        $(this).removeClass('show-fullscreen-black');
+        $('.form-success').removeClass('show-form-success');
+    });
 })(jQuery);
