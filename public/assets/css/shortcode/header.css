@@ -205,7 +205,96 @@ NOTE: This is Header style file. All Header related style included in this file.
         .login-form-wrap {
             margin-left: 32%;
         }
-        
+        .login-form-wrap {
+            width: 700px;
+            z-index: 9999;
+            box-shadow: 0px 2px 12px rgba(0, 0, 0, 0.15);
+            border-radius: 4px;
+            margin: auto;
+            position: relative;
+            top: 20px;
+            display: none;
+        }
+        .header-login-form-wrap{
+            width:100%;
+            text-align: center;
+           
+        }
+        .header-login-form-wrap .login-wrap{
+            float: left;
+            width:50%;
+            height: 60px;
+            padding-top: 17px;
+            cursor: pointer;
+           
+        }
+
+        .showborder{
+            border-bottom:1px solid #f0442c;
+        }
+        .header-login-form-wrap .login-wrap h3{
+            font-family: "Arial",sans-serif;
+            font-size: 20px;
+            color:rgb(155, 155, 155);
+        }
+        .header-login-form-wrap .register-wrap{
+            float: left;
+            width:50%;
+            height: 60px;
+            padding-top: 17px;
+            cursor: pointer;
+           
+        }
+        .header-login-form-wrap .register-wrap h3{
+            font-family: "Arial",sans-serif;
+            font-size: 20px;
+            color:rgb(155, 155, 155);
+        }
+        .divheight{
+            height: 60px;
+            border-bottom: 1px solid #e2e2e2;
+        }
+        /* content form login */
+        .content-login-form-wrap{
+            padding: 30px;
+            padding-top: 20px;
+            width: 100%;
+            height: 370px;
+            
+        }
+        .content-register-form-wrap{
+            padding: 30px;
+            padding-top: 20px;
+            width: 100%;
+            height: 370px;
+            display: none;
+        }
+        .left-wrap{
+            width: 60%;
+            float: left;
+        }
+        .content-left-wrap{
+            border-right: 1px solid #e2e2e2;
+            padding-right: 30px;
+        }
+        .login-with-email{
+            width: 100%;
+            font-size:17px;
+            color: rgb(80, 80, 80);
+            font-family:"Arial",sans-serif;
+            text-align:center;
+            margin-bottom: 20px;
+        }
+        .right-wrap{
+            float: left;
+            width: 40%;
+            padding-left:30px;
+         
+        }
+        .show-login {
+            display: block;
+        }
+
         .user-accoint {
             position: relative;
         }
@@ -215,26 +304,11 @@ NOTE: This is Header style file. All Header related style included in this file.
             position: absolute;
         }
         
-        .login-form-wrap {
-            padding: 40px;
-            width: 450px;
-            z-index: 9999;
-            box-shadow: 0px 2px 12px rgba(0, 0, 0, 0.15);
-            border-radius: 2px;
-            margin: auto;
-            position: relative;
-            display: none;
-            top: 20px;
-        }
-        
         .mobile-menu-area {
-            position: absolute;
+            position: relative;
             z-index: 666;
         }
-        
-        .show-login {
-            display: block;
-        }
+    
         
         .fullscreen-black {
             top: 0;
@@ -319,11 +393,13 @@ NOTE: This is Header style file. All Header related style included in this file.
         }
         
         .zm-login-social-box .social-btn {
-            height: 30px;
+            height: 45px;
             display: block;
-            line-height: 30px;
+            line-height: 45px;
             width: 100%;
             padding: 0;
+            margin-bottom: 30px;
+            border-radius: 4px;
         }
         
         .zm-login-social-box .social-btn+.social-btn {
@@ -773,3 +849,14 @@ NOTE: This is Header style file. All Header related style included in this file.
             .sidebar-menu {
                 display: none;
             }
+    }
+    .bg-google{
+        background: #d9412c;
+        color: #ffff;
+    }
+    .btn-login{
+        background: #f0442c;
+        color: #fff;
+        width:100%;
+        height: 40px;
+    }

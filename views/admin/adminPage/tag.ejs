@@ -1,0 +1,159 @@
+<%include ../adminLayout/header%>
+<%include ../adminLayout/sidebar%>
+    <!-- DataTables Example -->
+  <div class="container">
+    <div class="row">
+      <div class="col-md-7">
+        <div class="card mb-3">
+          <div class="card-header">
+            <i class="fas fa-list"></i>
+            Tag List</div>
+          <div class="card-body">
+            <div class="table-responsive">
+              <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <thead>
+                  <tr>
+                    <th style="display:none"></th>
+                    <th>id</th>
+                    <th>Name</th>
+                    <th>Category</th>
+                    <th style="width:78px">Edit</th>
+                  </tr>
+                </thead>
+                <%tag.forEach(function(rows){%>
+                  <tbody>
+                    <tr>
+                      <td class="idCategory" style="display:none"><%= rows.idCategory%></td>
+                      <td class="idTag"><%= rows.id%></td>
+                      <td class="nameTag"><%= rows.name%></td>
+                      <td class="nameCategory"><%= rows.nameCategory%></td>
+                      <td>
+                        <button type="button" id="btnEditTag" class="btn btn-primary"><i class="fas fa-edit"></i></button>
+                        <a class="btn btn-danger" href="/admin/tag/deleteTag/<%=rows.id%>"><i class="fas fa-trash-alt"></i></a>
+                      </td>
+                    </tr>
+                  </tbody>
+                <%});%>
+              </table>
+            </div>
+          </div>
+          <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
+        </div>
+      </div>
+      <div class="col-md-5 addTag">
+        <div class="card mb-3">
+          <div class="card-header">
+            <i class="fas fa-plus-circle"></i>
+            Add Tag
+          </div>
+          <div class="card-body">
+            <div class="table-responsive">
+              <form method="POST" action="/admin/tag/addTag" autocomplete="off">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                  <thead>
+                    <tr>
+                      <th>Name</th>
+                      <th>Category</th>
+                    </tr>
+                  </thead>
+                  <tr>
+                    <td>
+                      <input name="inputName" style="width:175px" >
+                    </td>
+                    <td>
+                      <select style="width:175px" name = "idCategory">
+                        <%category.forEach(function(rows){%>
+                          <option id="optionCategory" value="<%= rows.id%>"><%=rows.name%></option>
+                        <%});%>
+                      </select>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td colspan="2" align="center">
+                    <button type="submit" class="btn btn-primary">Save</button>
+                    </td>
+                  </tr>
+                </table>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-5 editTag">
+        <div class="card mb-3">
+          <div class="card-header">
+           <i class="fas fa-edit"></i>
+            Edit Tag
+            <button id="btnAddTag" class="btn btn-info" style="margin-left:230px"><i class="fas fa-plus-circle"></i></button>
+          </div>
+          <div class="card-body">
+            <div class="table-responsive">
+              <form id="formEditTag" method="POST" autocomplete="off">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                  <thead>
+                    <tr>
+                      <th>Name</th>
+                      <th>Category</th>
+                    </tr>
+                  </thead>
+                  <tr>
+                    <td>
+                      <input name="inputName" id="inputName" style="width:175px">
+                    </td>
+                    <td>
+                      <select style="width:175px" name="idCategory">
+                        <%category.forEach(function(rows){%>
+                          <option class="optionCategory" value="<%= rows.id%>"><%=rows.name%></option>
+                        <%});%>
+                      </select>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td colspan="2" align="center">
+                      <button type="submit" class="btn btn-primary">Save</button>    
+                    </td>
+                  </tr>
+                </table>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div> 
+  </div>
+
+<script>
+ //----------Start Tag---------------
+    //edit tag
+    var btnEditTag=document.querySelectorAll('tbody tr td #btnEditTag');
+    var addTag = document.getElementsByClassName('addTag');
+    var editTag =  document.getElementsByClassName('editTag');
+    var idTag = document.getElementsByClassName('idTag');
+    var idCategory = document.getElementsByClassName('idCategory');
+    var nameTag = document.getElementsByClassName('nameTag');
+    var nameCategory = document.getElementsByClassName('nameCategory');
+    var inputName=document.getElementById('inputName');
+    var optionCategory=document.getElementsByClassName('optionCategory');
+    //update
+    var formEditTag =document.getElementById('formEditTag');
+    for(let i=0;i<btnEditTag.length;i++){
+        btnEditTag[i].onclick=function(){
+            for(let j =0;j<optionCategory.length;j++){
+              if(optionCategory[j].value===idCategory[i].innerText){
+                optionCategory[j].selected="seleted";
+              }
+            }
+            addTag[0].classList.add('hideAddTag');
+            editTag[0].classList.add('showEditTag');
+            inputName.value= nameTag[i].innerText;
+            formEditTag.action="/admin/tag/edit/"+idTag[i].innerText;
+            
+        };
+    }
+    var btnAddTag = document.getElementById('btnAddTag');
+    btnAddTag.onclick= function(){
+        addTag[0].classList.remove('hideAddTag');
+        editTag[0].classList.remove('showEditTag');
+    };
+</script>
+<% include ../adminLayout/footer%>

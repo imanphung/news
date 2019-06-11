@@ -1,37 +1,50 @@
-<%include ../layout/header%>
+<%include ./layout/header%>
 <div class="zm-section bg-white ptb-70">
     <div class="container">
         <div class="row mb-40">
             <div class="col-md-12 col-sm-12 col-lg-12 col-xs-12">
                 <div class="section-title">
-                    <h2 class="h6 header-color header-table-viewlistwrite inline-block uppercase">Danh sách bài viết</h2>
+                    <h2 class="h6 header-color header-table-viewlistwrite inline-block uppercase">Danh sách bài viết <i class="fas fa-caret-down"></i></h2>
                 </div>
             </div>
         </div >
         <div class="viewlistwrite">
-            <table class="table table-bordered table-viewlistwrite">
-                <thead class="thead-dark">
+            <table class="table table-bordered table-viewlistwrite" style="text-align:center">
+                <thead class="thead-dark"  >
                     <tr>
-                    <th scope="col">Thứ tự</th>
-                    <th scope="col">Tên bài viết</th>
-                    <th scope="col">Đã được duyệt & chờ xuất bản</th>
-                    <th scope="col">Đã xuất bản</th>
-                    <th scope="col">Bị từ chối</th>
-                    <th scope="col">Chưa được duyệt</th>
-                    <th scope="col">Hiệu chỉnh</th>
+                    <th scope="col" style="width:50px;text-align:center">Thứ tự</th>
+                    <th scope="col" style="width:300px;text-align:center">Tên bài viết</th>
+                    <th scope="col" style="width:220px;text-align:center">Đã được duyệt & chờ xuất bản</th>
+                    <th scope="col" style="width:95px;text-align:center">Đã xuất bản</th>
+                    <th scope="col" style="width:95px;text-align:center">Bị từ chối</th>
+                    <th scope="col" style="width:130px;text-align:center">Chưa được duyệt</th>
+                    <th scope="col" style="width:95px;text-align:center">Hiệu chỉnh</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <th scope="row">1</th>
-                        <td>Mark</td>
-                        <td><i class="fas fa-check-circle"></i></td>
-                        <td><i class="fas fa-check-circle"></i></td>
-                        <td><i class="fas fa-check-circle"></i></td>
-                        <td><i class="fas fa-check-circle"></i></td>
-                        <td><button class="btn btn-danger">Chỉnh sửa</button></td>
-                    </tr>
+                    <%i=0%>
                     
+                    <%posts.forEach(function(rows){%>
+                        <tr>
+                            <th scope="row"><%=++i%></th>
+                            <td><%=rows.title%></td>
+                            <td><%if(rows.articleStatus===2){%>
+                                    <i class="fas fa-check-circle"></i>
+                                <%}%></td>
+                            <td><%if(rows.articleStatus===1){%>
+                                    <i class="fas fa-check-circle"></i>
+                                <%}%></td>
+                            <td><%if(rows.articleStatus===-1){%>
+                                    <i class="fas fa-check-circle"></i>
+                                <%}%></td>
+                            <td>
+                                <%if(rows.articleStatus===0){%>
+                                    <i class="fas fa-check-circle"></i>
+                                <%}%>
+                            </td>
+                            <td><button class="btn btn-danger">Chỉnh sửa</button></td>
+                        </tr>
+                    <%})%>                             
                 </tbody>
             </table>
             <div class="btnsuccess">
@@ -45,29 +58,42 @@
                 </div>
             </div>
         </div >
-        <form>
+        <form autocomplete="off" method="POST" action="/writer/addPosts" enctype="multipart/form-data">
             <div class="row">
                 <div class="col-md-12 col-sm-12 col-lg-3 col-xs-12">  
                     <div class="form-group">
                         <label>Tiêu đề</label>
-                        <input type="text" class="form-control" placeholder="Nhập tiêu đề...">
+                        <input name="title" type="text" class="form-control" placeholder="Nhập tiêu đề...">
                     </div>
                     <div class="form-group">
                         <label>Nội dung tóm tắt</label>
-                        <input type="text" class="form-control" placeholder="Nhập nội dung tóm tắt...">
+                        <input name="abstract" type="text" class="form-control" placeholder="Nhập nội dung tóm tắt...">
+                    </div>
+                    <div class="form-group">
+                        <label>Ảnh</label>
+                        <input type="file" name="image">
                     </div>
                     <div class="form-group">
                         <div>
                             <label>Chuyên mục</label>
-                            <select id="inputState" class="form-control">
-                                <option selected>Kinh doanh</option>
-                                <option>Thể thao</option>
+                            <select id="inputState" name="idCategory" class="form-control">
+                                <option selected="selected">Chọn chuyên mục</option>
+                                <%category.forEach(function(rows){%>
+                                    <option value="<%=rows.id%>"><%=rows.name%></option>
+                                <%});%>
                             </select>
                         </div>
                     </div>
                     <div class="form-group">
-                        <label>Nhãn tag</label>
-                        <input type="text" class="form-control" placeholder="Tag...">
+                        <div>
+                            <label>Tag</label>
+                            <select id="inputState" name="idTag" class="form-control">
+                                <option selected="selected">Chọn Tag</option>
+                                <%tag.forEach(function(rows){%>
+                                    <option value="<%=rows.id%>"><%=rows.name%></option>
+                                <%});%>
+                            </select>
+                        </div>
                     </div>
                     <div class="form-group">
                         <div class="col-md-12 col-sm-12 col-lg-12 col-xs-12 ml-100 xs-ml-150">
@@ -84,4 +110,4 @@
         </form>
     </div>
 </div>
-<%include ../layout/footer%>
+<%include ./layout/footer%>

@@ -1,0 +1,10 @@
+const express= require('express');
+var bodyParser = require('body-parser');
+var urlencodedParser = bodyParser.urlencoded({ extended: false });
+const controller= require('../../controllers/admin/subcategory.controller');
+var router = express.Router();
+router.get('/:id',controller.subcategory);
+// router.post('/addCategory',urlencodedParser,controller.addCategory);
+// router.post('/edit/:id',urlencodedParser,controller.editCategory);
+// router.post('/delete/:id',urlencodedParser,controller.deleteCategory);
+module.exports = router;

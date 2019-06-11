@@ -28,7 +28,7 @@ document.addEventListener("DOMContentLoaded",function startTime(){
             day = "Thứ bảy";
             break;
         }
-        case 7:{
+        default:{
             day = "Chủ nhật";
             break;
         }

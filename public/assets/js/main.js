@@ -445,6 +445,10 @@
         $('.login-form-wrap').addClass('show-login');
         $('.login-form-wrap-mobile').addClass('show-login');
         $('.fullscreen-black').addClass('show-fullscreen-black');
+        $('.login-wrap').addClass("showborder");
+        $('.register-wrap').removeClass("showborder");
+        $('.login-wrap h3').css("color","#f0442c");
+        $('.register-wrap h3').css("color","rgb(155, 155, 155)");
 
     });
     $('.fullscreen-black').on('click',function(){
@@ -452,6 +456,22 @@
         $('.login-form-wrap').removeClass('show-login');
         $('.login-form-wrap-mobile').removeClass('show-login');
         $('.wrapper').removeClass('fixed');
+    });
+    $('.login-wrap').on('click',function(){
+        $(this).addClass("showborder");
+        $('.content-register-form-wrap').css("display","none");
+        $('.content-login-form-wrap').css("display","block");
+        $('.register-wrap').removeClass("showborder");
+        $('.login-wrap h3').css("color","#f0442c");
+        $('.register-wrap h3').css("color","rgb(155, 155, 155)");
+    });
+    $('.register-wrap').on('click',function(){
+        $(this).addClass("showborder");
+        $('.content-login-form-wrap').css("display","none");
+        $('.content-register-form-wrap').css("display","block");
+        $('.login-wrap').removeClass("showborder");
+        $('.register-wrap h3').css("color","#f0442c");
+        $('.login-wrap h3').css("color","rgb(155, 155, 155)");
     });
     /*-------------------------------------------
         21. Search

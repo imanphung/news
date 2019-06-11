@@ -1,0 +1,33 @@
+/* start category */
+.editCategory{
+    display: none;
+}
+.showEditCategory{
+    display: block;
+}
+.hideAddCategory{
+    display: none;
+}
+.showAddCategory{
+    display: block;
+}
+
+
+/* end category */
+
+
+/* start tag */
+.editTag{
+    display: none;
+}
+.showEditTag{
+    display: block;
+}
+.hideAddTag{
+    display: none;
+}
+.showAddTag{
+    display: block;
+}
+
+/* end tag */
