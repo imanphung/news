@@ -29,6 +29,7 @@
 </head>
 
 <body>
+
     <!-- Body main wrapper start -->
     <div class="wrapper">
         <!-- Start of header area -->
@@ -70,7 +71,12 @@
                                     <span class="calendar uppercase"></span>
                                 </div>
                                 <div class="user-accoint topbar-sblock">
+                                <% if(login){%>
+                                    <span><a href="/logout"><%=user.name%></a></span>
+                                <%}else{%>
                                     <span class="login-btn uppercase">Đăng nhập</span>
+                                <%}%>
+                                    
                                     <div class="fullscreen-black"></div>
                                 </div>
                             </div>

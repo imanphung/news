@@ -12,14 +12,12 @@ module.exports = function (passport) {
     // passport needs ability to serialize and unserialize users out of session
     // used to serialize the user for the session
     passport.serializeUser(function (user, done) {
-        console.log(user.id);
-        done(null, user.id);
+        done(null, user);
         
     });
     // used to deserialize the user
-    passport.deserializeUser(function (id, done) {
-        console.log(id);
-        done(null, id)
+    passport.deserializeUser(function (user, done) {
+        done(null, user)
     });
     // code for login (use('local-login', new LocalStategy))
     // code for signup (use('local-signup', new LocalStategy))
@@ -41,12 +39,13 @@ module.exports = function (passport) {
                 if(err) return done(err);
                 // res.render('admin/adminPage/category',{category});
                 if(rows.length){
-                    return done(null,false);
+                    return done(null,rows[0]);
                 }else{
-                    var newUser = {
-                        id:profile._json.id,
-                        email:profile._json.email,
-                        name:profile._json.name
+                    var newUser = new Object();
+
+                        newUser.id= profile._json.id,
+                        newUser.email=profile._json.email,
+                        newUser.name=profile._json.name
                     }
                     db.query("INSERT INTO subscriber(id,email,name) VALUES('"+profile._json.id+"','"+profile._json.email+"','"+profile._json.name+"')",function(err,result){
                         if(err) return done(err);
@@ -55,8 +54,7 @@ module.exports = function (passport) {
                         }
                         
                     });
-                }
-                
+                 
             });
         }));
 };
