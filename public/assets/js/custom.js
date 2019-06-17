@@ -1,3 +1,5 @@
+import { format } from "url";
+
 //Calendar
 document.addEventListener("DOMContentLoaded",function startTime(){
     var txtcalendar = document.getElementsByClassName("calendar");
@@ -45,4 +47,14 @@ document.addEventListener("DOMContentLoaded",function startTime(){
     var t = setTimeout(function() {
         startTime();
     }, 500);
+
+    //format abstract
+    
 },false);
+// $(document).ready(function(){
+//     var str = $('.content-abstract').text();
+//     if(str.length >20){
+        
+//     }
+// });
+

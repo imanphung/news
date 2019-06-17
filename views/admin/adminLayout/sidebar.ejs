@@ -10,28 +10,27 @@
       <li class="nav-item">
         <a class="nav-link" href="/admin/category">
           <i class="fas fa-list"></i>
-          <span>Category</span></a>
+          <span>Chuyên mục</span></a>
         <ul>
-            <li class="nav-item">
-            <a class="nav-link" href="/admin/category">
-            <i class="fas fa-list"></i>
-            <span>SubCategory</span></a>
-        </li>
+            <%category.forEach(function(rows){%>
+              <li class="nav-item">
+                  <a class="nav-link" href="/admin/category/<%=rows.id%>">
+                  <span><%= rows.name%></span></a>
+                  </li>
+            <%});%>
         </ul>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="/admin/tag">
-          <i class="fas fa-tags"></i>
           <span>Tag</span></a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="/admin/posts">
           <i class="fas fa-newspaper"></i>
-          <span>Posts</span></a>
+          <span>Bài viết</span></a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="/admin/userlist">
           <i class="fas fa-users"></i>
-          <span>User list</span></a>
+          <span>Tài khoản</span></a>
       </li>
     </ul>

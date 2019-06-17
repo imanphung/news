@@ -10,21 +10,21 @@
     <!-- Place favicon.ico in the root directory -->
     <!-- All css files are included here. -->
     <!-- Bootstrap fremwork main css -->
-    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
-    <link rel="stylesheet" href="assets/fontawesome/css/all.css">
+    <link rel="stylesheet" href="../../assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../assets/fontawesome/css/all.css">
     <!-- This core.css file contents all plugings css file. -->
-    <link rel="stylesheet" href="assets/css/core.css">
+    <link rel="stylesheet" href="../../assets/css/core.css">
     <!-- Theme shortcodes/elements style -->
-    <link rel="stylesheet" href="assets/css/shortcode/shortcodes.css">
+    <link rel="stylesheet" href="../../assets/css/shortcode/shortcodes.css">
     <!-- Theme main style -->
-    <link rel="stylesheet" href="assets/style.css">
+    <link rel="stylesheet" href="../../assets/style.css">
     <!-- Responsive css -->
-    <link rel="stylesheet" href="assets/css/responsive.css">
+    <link rel="stylesheet" href="../../assets/css/responsive.css">
     <!-- User style -->
-    <link rel="stylesheet" href="assets/css/custom.css">
+    <link rel="stylesheet" href="../../assets/css/custom.css">
 
     <!-- Style customizer (Remove these lines please) -->
-    <link rel="stylesheet" href="assets/css/style-customizer.css">
+    <link rel="stylesheet" href="../../assets/css/style-customizer.css">
     <link href="#" data-style="styles" rel="stylesheet">
     <script type="text/javascript">
         if (window.location.hash === "#_=_"){
@@ -166,7 +166,7 @@
                                     <div class="global-cell">
                                         <div class="logo">
                                             <a href="/">
-                                                <img src="uploads/images/logo/1.png" alt="main logo">
+                                                <img src="../../uploads/images/logo/1.png" alt="main logo">
                                             </a>
                                             <p class="site-desc">News blog & Magazine Template</p>
                                         </div>
@@ -178,3 +178,146 @@
                 </div>
             </div>
         </header>
+        <article class="zm-post-lay-single">
+                                        <div class="zm-post-dis">
+                                            <div class="zm-post-header">
+                                                <h2 class="zm-post-title h2"><a href="blog-single-image.html"><%=post[0].title%></a></h2>
+                                            </div>
+                                            
+                                            <div class="zm-post-content" >
+                                          <%-post[0].content%>
+                                            
+                                                <div class="zm-post-meta">
+                                                    <ul>
+                                                        <li class="s-meta"><a href="#" class="zm-author">An Phung</a></li>
+                                                        <li class="s-meta"><a href="#" class="zm-date">15/5/2019</a></li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </article>
+                                  
+
+         <!-- Start footer top area -->
+            <div class="footer-top-wrap ptb-70 bg-dark">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4 hidden-sm">
+                            <div class="zm-widget pr-40">
+                                <h2 class="h6 zm-widget-title uppercase text-white mb-30">Giới thiệu</h2>
+                                <div class="zm-widget-content">
+                                    <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat, non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                                    <p>Sed ut perspiciatis unde omnis iste, voluptatem dolore mque laudantium totam rem aperiam eaque ipsa quae ab illo inventore veritatis et quasi.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-4 col-md-6 col-lg-2">
+                            <div class="zm-widget">
+                                <h2 class="h6 zm-widget-title uppercase text-white mb-30">Kết nối với chúng tôi</h2>
+                                <div class="zm-widget-content">
+                                    <div class="zm-social-media zm-social-1">
+                                        <ul>
+                                            <li><a href="https://www.facebook.com"><i class="fab fa-facebook"></i>Like us on Facebook</a></li>
+                                            <li><a href="https://twitter.com"><i class="fab fa-twitter"></i>Tweet us on Twitter</a></li>
+                                            <li><a href="https://www.pinterest.com/"><i class="fab fa-pinterest"></i>Pin us on Pinterest</a></li>
+                                            <li><a href="https://www.instagram.com/"><i class="fab fa-instagram"></i>Heart us on Instagram</a></li>
+                                            <li><a href="https://plus.google.com"><i class="fab fa-google-plus"></i>Share us on GooglePlus</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-4 col-md-6 col-lg-3">
+                            <div class="zm-widget pr-50 pl-20">
+                                <h2 class="h6 zm-widget-title uppercase text-white mb-30">Phổ biến</h2>
+                                <div class="zm-widget-content">
+                                    <div class="zm-category-widget zm-category-1">
+                                        <ul>
+                                            <li><a href="#">Kinh doanh<span>22</span></a></li>
+                                            <li><a href="#">Bóng đá<span>18</span></a></li>
+                                            <li><a href="#">Showbiz<span>09</span></a></li>
+                                            <li><a href="#">Công nghệ<span>35</span></a></li>
+                                            <li><a href="#">Thị trường<span>7</span></a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-4 col-md-6 col-lg-3">
+                            <div class="zm-widget">
+                                <h2 class="h6 zm-widget-title uppercase text-white mb-30">Subscribe Newsletter</h2>
+                                <!-- Start Subscribe From -->
+                                <div class="zm-widget-content">
+                                    <div class="subscribe-form subscribe-footer">
+                                        <p>Join 80,000+ awesome subscribers and update yourself with our exclusive news.</p>
+                                        <form action="#">
+                                            <input type="text" placeholder="Enter your full name">
+                                            <input type="email" placeholder="Enter email address" required="">
+                                            <input type="submit" value="Subscribe">
+                                        </form>
+                                    </div>
+                                </div>
+                                <!-- End Subscribe From -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+ <!-- End footer top area -->
+ <div class="footer-buttom bg-black ptb-15">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-5 col-lg-5">
+                <div class="zm-copyright">
+                    <p>Make with ❤ by Thanh An Phung - HCMUS</p>
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-7 col-lg-7 text-right hidden-xs">
+                <nav class="footer-menu zm-secondary-menu text-right">
+                    <ul>
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">Feature</a></li>
+                        <li><a href="#">Shortcodes</a></li>
+                        <li><a href="#">About</a></li>
+                        <li><a href="#">Contact</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </div>
+</div>
+</footer>
+<!-- End footer area -->
+</div>
+<!-- Body main wrapper end -->
+
+<!--Color customizer -->
+<div class="style-customizer closed">
+<a class="opener" href="#"><i class="fas fa-cog fa-spin"></i></a>
+<div class="clearfix content-chooser">
+<ul class="styleChange clearfix">
+    <li class="color-1" title="color-1" data-style="color-1" ></li>
+    <li class="color-2" title="color-2" data-style="color-2"></li>
+    <li class="color-3" title="color-3" data-style="color-3"></li>
+    <li class="color-4" title="color-4" data-style="color-4"></li>
+    <li class="color-5" title="color-5" data-style="color-5"></li>
+    <li class="color-6" title="color-6" data-style="color-6"></li>
+</ul>
+</div>
+</div>
+<!--Color customizer end -->
+
+
+<!-- Placed js at the end of the document so the pages load faster -->
+<!-- jquery latest version -->
+<script src="../../assets/js/vendor/jquery-1.12.1.min.js"></script>
+<!-- Bootstrap framework js -->
+<script src="../../assets/js/bootstrap.min.js"></script>
+<!-- All js plugins included in this file. -->
+<script src="../../assets/js/owl.carousel.min.js"></script>
+<script src="../../assets/js/plugins.js"></script>
+<!-- Main js file that contents all jQuery plugins activation. -->
+<script src="../../assets/js/main.js"></script>
+<script src="../../assets/js/custom.js"></script>
+</body>
+</html>

@@ -21,7 +21,6 @@ const adminCategory = require('./routers/admin/category.router');
 const adminTag =require('./routers/admin/tag.router');
 const adminPosts =require('./routers/admin/posts.router');
 const adminUserList =require('./routers/admin/userlist.router');
-const adminSubcategory=require('./routers/admin/subcategory.router');
 
 
 var app = express();
@@ -58,8 +57,11 @@ app.get('/logout',(req,res)=>{
     req.logOut();
     res.redirect('/');
 });
+
 app.use('/auth/facebook',auth);
 app.use("/",getIndex);
+
+
 app.use('/category',getCategory);
 app.use('/category-details',getCategoryDetails);
 app.use('/writer',getWriter);
@@ -69,7 +71,6 @@ app.use('/editor',getEditor);
 app.use('/admin',adminProduct);
 app.use('/admin/signin',adminSignin);
 app.use('/admin/category',adminCategory);
-app.use('/admin/subcategory/',adminSubcategory);
 app.use('/admin/tag',adminTag);
 app.use('/admin/posts',adminPosts);
 app.use('/admin/userlist',adminUserList);

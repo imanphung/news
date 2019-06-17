@@ -14,10 +14,7 @@
                     <tr>
                     <th scope="col" style="width:50px;text-align:center">Thứ tự</th>
                     <th scope="col" style="width:300px;text-align:center">Tên bài viết</th>
-                    <th scope="col" style="width:220px;text-align:center">Đã được duyệt & chờ xuất bản</th>
-                    <th scope="col" style="width:95px;text-align:center">Đã xuất bản</th>
-                    <th scope="col" style="width:95px;text-align:center">Bị từ chối</th>
-                    <th scope="col" style="width:130px;text-align:center">Chưa được duyệt</th>
+                    <th scope="col" style="width:220px;text-align:center">Trạng thái</th>
                     <th scope="col" style="width:95px;text-align:center">Hiệu chỉnh</th>
                     </tr>
                 </thead>
@@ -28,20 +25,19 @@
                         <tr>
                             <th scope="row"><%=++i%></th>
                             <td><%=rows.title%></td>
-                            <td><%if(rows.articleStatus===2){%>
-                                    <i class="fas fa-check-circle"></i>
-                                <%}%></td>
-                            <td><%if(rows.articleStatus===1){%>
-                                    <i class="fas fa-check-circle"></i>
-                                <%}%></td>
-                            <td><%if(rows.articleStatus===-1){%>
-                                    <i class="fas fa-check-circle"></i>
-                                <%}%></td>
                             <td>
-                                <%if(rows.articleStatus===0){%>
-                                    <i class="fas fa-check-circle"></i>
-                                <%}%>
-                            </td>
+                                    <%if(rows.articleStatus===-1){%>
+                                        <i class="fa fa-times-circle" style="color:rgb(216, 75, 75)"></i>
+                                       
+                                    <%}%>
+                                    <%if(rows.articleStatus===1){%>
+                                        <i class="fas fa-check-circle"></i>
+                                    <%}%>
+                                    <%if(rows.articleStatus===0){%>
+                                        <i class="fas fa-stopwatch"></i>
+                                    <%}%>
+                                 
+                                </td>
                             <td><button class="btn btn-danger">Chỉnh sửa</button></td>
                         </tr>
                     <%})%>                             
@@ -102,7 +98,7 @@
                     </div>
                 </div>
                 <div class="col-md-12 col-sm-12 col-lg-9 col-xs-12">
-                    <script src="ckeditor/ckeditor.js"></script>
+                    <script src="ckeditor/ckeditor.js">CKEDITOR.replace('editor');</script>
                     <label>Nội dung</label>
                     <textarea class="ckeditor" name="editor"></textarea>
                 </div>

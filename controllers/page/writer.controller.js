@@ -12,7 +12,7 @@ module.exports.getWrite=(req,res)=>{
     db.query("SELECT * FROM posts ORDER BY id ASC",function(err,result){
         if(err) throw err;
         posts=result;
-        res.render('page/writer',{category,tag,posts});
+        res.render('page/writer',{category,tag,posts,login:req.session.login, user:req.session.user});
     });
 };
 module.exports.addPosts=(req,res)=>{

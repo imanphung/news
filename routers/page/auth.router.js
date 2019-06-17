@@ -3,7 +3,7 @@ module.exports = function (app, passport){
         // xử lý sau khi user cho phép xác thực với facebook
     app.get('/auth/facebook/callback',
         passport.authenticate('facebook', {
-            successRedirect: '/',
+            successRedirect: '/writer',
             failureRedirect: '/'
         })
     );

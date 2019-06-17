@@ -15,25 +15,33 @@
                                                 <ul class="clearfix">
                                                     <li class="current drop"><a href="#">Trang chủ</a>
                                                         <ul class="dropdown">
-                                                        <% result.forEach(function(row){%>
-                                                            <li class="drop"><a href="#"><%=row.name%></a>
+                                                        <% category.forEach(function(rows){%>
+                                                            <li class="drop"><a href="#"><%=rows.name%></a>
                                                                 <ul class="dropdown level2">
-                                                                    <li><a href="index.html">Doanh nhân</a></li>
-                                                                    <li><a href="index-3.html">Tài chính</a></li>
-                                                                    <li><a href="index-7.html">Bất động sản</a></li>
-                                                                    <li><a href="index-7.html">Khởi nghiệp</a></li>
+                                                                    <%subcategory.forEach(function(sub){%>
+                                                                        <%if(sub.idCategory===rows.id){%>     
+                                                                            <li><a href="#"><%=sub.name%></a></li>
+                                                                        <%
+                                                                        }
+                                                                        %>
+                                                                        
+                                                                    <%});%>
                                                                 </ul>
                                                             </li>
                                                         <%});%>
                                                         </ul>
                                                     </li>
-                                                    <% result.forEach(function(row){%>
-                                                        <li class="drop"><a href="#"><%=row.name%><i class="fal fa-analytics"></i></a>
+                                                    <% category.forEach(function(rows){%>
+                                                        <li class="drop"><a href="#"><%=rows.name%><i class="fal fa-analytics"></i></a>
                                                             <ul class="dropdown">
-                                                                <li><a href="index.html">Doanh nhân</a></li>
-                                                                <li><a href="index-3.html">Tài chính</a></li>
-                                                                <li><a href="index-7.html">Bất động sản</a></li>
-                                                                <li><a href="index-7.html">Khởi nghiệp</a></li>
+                                                                <%subcategory.forEach(function(sub){%>
+                                                                    <%if(sub.idCategory===rows.id){%>     
+                                                                        <li><a href="#"><%=sub.name%></a></li>
+                                                                    <%
+                                                                    }
+                                                                    %>
+                                                                    
+                                                                <%});%>
                                                             </ul>
                                                         </li>    
                                                     <%});%>
@@ -75,25 +83,33 @@
                             <ul>
                                 <li><a href="index.html">Trang chủ</a>
                                     <ul>
-                                        <% result.forEach(function(row){%>
-                                            <li class="drop"><a href="#"><%=row.name%></a>
+                                        <% category.forEach(function(rows){%>
+                                            <li class="drop"><a href="#"><%=rows.name%></a>
                                                 <ul class="dropdown level2">
-                                                    <li><a href="index.html">Doanh nhân</a></li>
-                                                    <li><a href="index-3.html">Tài chính</a></li>
-                                                    <li><a href="index-7.html">Bất động sản</a></li>
-                                                    <li><a href="index-7.html">Khởi nghiệp</a></li>
+                                                        <%subcategory.forEach(function(sub){%>
+                                                            <%if(sub.idCategory===rows.id){%>     
+                                                                <li><a href="#"><%=sub.name%></a></li>
+                                                            <%
+                                                            }
+                                                            %>
+                                                            
+                                                        <%});%>
                                                 </ul>
                                             </li>
                                         <%});%>
                                     </ul>
                                 </li>
-                                <% result.forEach(function(row){%>
-                                    <li class="drop"><a href="#"><%=row.name%><i class="fal fa-analytics"></i></a>
+                                <% category.forEach(function(rows){%>
+                                    <li class="drop"><a href="#"><%=rows.name%><i class="fal fa-analytics"></i></a>
                                         <ul class="dropdown">
-                                            <li><a href="index.html">Doanh nhân</a></li>
-                                            <li><a href="index-3.html">Tài chính</a></li>
-                                            <li><a href="index-7.html">Bất động sản</a></li>
-                                            <li><a href="index-7.html">Khởi nghiệp</a></li>
+                                                <%subcategory.forEach(function(sub){%>
+                                                    <%if(sub.idCategory===rows.id){%>     
+                                                        <li><a href="#"><%=sub.name%></a></li>
+                                                    <%
+                                                    }
+                                                    %>
+                                                    
+                                                <%});%>
                                         </ul>
                                     </li>    
                                 <%});%>
