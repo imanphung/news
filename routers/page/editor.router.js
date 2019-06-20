@@ -4,4 +4,5 @@ var router = express.Router();
 router.get('/',controller.getEditor);
 router.get('/view/:id',controller.View);
 router.post('/reject/:id',controller.Reject);
+router.post('/edit/:id',controller.Edit);
 module.exports = router;

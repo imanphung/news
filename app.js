@@ -32,26 +32,25 @@ app.use(cookieParser()); // đọc cookie (cần cho xác thực)
 app.use(bodyParser()); // lấy thông tin từ html forms
 app.use(session({
     cookie: {maxAge: (3600 * 1000)},
-    unser: 'destroy',
     secret: 'JackCodeHammer',
-    resave: false,
-    saveUninitialized: true,
-    cookie: {secure: false}
+    resave: true, saveUninitialized: false
 }));
 app.use(passport.initialize());
 app.use(passport.session()); // persistent login sessions
 require('./config/passport')(passport);
 require('./routers/page/auth.router')(app, passport); // Load routes truyền vào app và passport đã config ở trên
-app.use((req, res, next) => {
-    if (req.isAuthenticated()) {
-        req.session.login = true;
-        req.session.user = req.user;
-    }else {
-        req.session.login = false;
-        req.session.user = {};
-    }
-    next();
+
+app.use((req, res, next) => { 
+        if (req.isAuthenticated()) {
+            req.session.login = true;
+            req.session.user = req.user;
+        }else {
+            req.session.login = false;
+            req.session.user = {};
+        }
+        next();
 });
+
 
 app.get('/logout',(req,res)=>{
     req.logOut();

@@ -15,5 +15,7 @@ var upload = multer({ storage: storage }).single('image');
 const controller = require('../../controllers/page/writer.controller');
 const router = express.Router();
 router.get('/',controller.getWrite);
-router.post('/addPosts',urlencodedParser,upload,controller.addPosts);
+router.get('/edit/:id',controller.editPost);
+router.post('/addPosts',urlencodedParser,upload,controller.addPost);
+router.post('/updatePost/:id',urlencodedParser,upload,controller.updatePost);
 module.exports = router;

@@ -134,14 +134,15 @@
                         <div class="left-wrap">
                             <div class="content-left-wrap">
                                 <div class="login-with-email"><p>Tạo tài khoản</p></div>
-                            <form class="zm-signin-form text-left">
-                                <input type="text" class="zm-form-control username" placeholder="Username or Email">
-                                <input type="password" class="zm-form-control password" placeholder="Password">
+                            <form class="zm-signin-form text-left" method="POST" action="/register">
+                                <input type="email" name="email" class="zm-form-control username" placeholder="Username or Email">
+                                <input type="password" name="pw" class="zm-form-control password" placeholder="Password">
+                                <input type="password" name="rpw" class="zm-form-control password" placeholder="Repassword">
                                 <div class="zm-submit-box clearfix  mt-20">
                                     <button class="btn btn-login " type="submit" >Đăng kí</button>
                                 </div>
                                 
-                                <span>Khi bấm tạo tài khoản bạn đã đồng ý với <a href="#">quy định</a> của tòa soạn</span>
+                            
                             </form>
                             </div>
                             

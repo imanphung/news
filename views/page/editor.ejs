@@ -11,39 +11,56 @@
         <div class="form-success">
             <div class="success">
                 <label for="">Xuất bản</label>
-                <form>
+                <form id="UploadPost" method="POST" action="/editor/edit/">
                 <div class="form-group">
-                       <label>Chuyên mục</label>
-                            <select id="inputState" class="form-control">
-                                <option selected>Kinh doanh</option>
-                                <option>Thể thao</option>
+                    <label>Chuyên mục</label>
+                            <select name="idCategory" class="form-control">
+                                <%category.forEach(function(rows){%>
+                                    <option class="optionCategory" value="<%= rows.id%>"><%=rows.name%></option>
+                                <%});%>
+            
                             </select>
                 </div>
-                  <div class="form-group">
+                <div class="form-group">
                     <label for="exampleInputPassword1">Thẻ tags</label>
-                    <input type="text" placeholder="Chuyên mục">
+                    <select id="inputState" name="idTag" class="form-control">
+                        <option selected="selected">Chọn Tag</option>
+                        <%tag.forEach(function(rows){%>
+                        <option class="optionTag" value="<%=rows.id%>"><%=rows.name%></option>
+                        <%});%>
+                    </select>
                 </div>
                 <div class="form-group">
                     <label for="exampleInputPassword1">Thời gian xuất bản</label>
                     <div class="boxreg-birthday">
                         <div class="input-birthday">
+                        <% var i = 1%>
                             <select name="day" id="day" class="input-birthday-day">
                                     <option disabled="disabled" selected="selected" value="">Ngày</option>
+                                    <% while(i<=31){%>
+                                        <option value="<%=i%>"><%=i%></option>
+                                    <% i++;}%>
                                     <option value="1"></option>
                             </select>
+                            <% var i = 1%>
                             <select name="month" id="month" class="input-birthday-month">
                                     <option disabled="disabled" selected="selected" value="">Tháng</option>
-                                    <option value="1"></option>
+                                    <% while(i<=12){%>
+                                        <option value="<%=i%>"><%=i%></option>
+                                    <% i++;}%>
                             </select>
+                            <% var i = 2019%>
                             <select name="year" id="year" class="input-birthday-year">
                                 <option disabled="disabled" selected="selected" value="">Năm</option>
-                                <option value="1"></option>
+                                <% while(i<=2030){%>
+                                    <option value="<%=i%>"><%=i%></option>
+                                <% i++;}%>
                             </select>
                         </div>
                     </div>
                 </div>
                 <button type="submit" class="btn btn-success">Ok</button>
-                <button type="submit" class="btn btn-primary">Huỷ</button>
+                <button type="button" class="btn btn-primary">Huỷ</button>
                 </form>
             </div>
         </div>
@@ -51,6 +68,8 @@
             <table class="table table-bordered">
                 <thead class="thead-dark">
                     <tr>
+                    <th style="display: none"></th> 
+                    <th style="display: none"></th> 
                     <th style="display: none"></th> 
                     <th scope="col">Thứ tự</th>
                     <th scope="col">Tên bài viết</th>
@@ -64,6 +83,8 @@
                     <% var i=0 %>
                     <% posts.forEach(function(rows){%>
                         <tr>
+                                <th class="idTag" style="display: none"><%=rows.idTag%></th>
+                                <th class="idCategory" style="display: none"><%=rows.idCategory%></th>
                                 <th class="idPost" style="display: none"><%=rows.idPost%></th>
                                 <th scope="row"><%=++i%></th>
                                 <td><%=rows.title%></td>
@@ -100,17 +121,37 @@
                 <button type="submit" class="btn btn-success btnsuccess">Xác nhận</button>
             </form>
         </div>
-       
     </div>
 </div>
 <%include ./layout/footer%>
 <script>
     var idPost=document.getElementsByClassName('idPost');
+    var UploadPost= document.getElementById('UploadPost');
     var rejectForm= document.getElementById('rejectForm');
     var btnReject=document.querySelectorAll('tbody tr td .btn-reject');
+    var btnOk=document.querySelectorAll('tbody tr td .btn-ok');
+    var idCategory = document.getElementsByClassName('idCategory');
+    var optionCategory=document.getElementsByClassName('optionCategory');
+    var idTag = document.getElementsByClassName('idTag');
+    var optionTag=document.getElementsByClassName('optionTag');
+    var id = idPost;
         for(let i=0;i<btnReject.length;i++){
             btnReject[i].onclick=function(){
                 rejectForm.action+=idPost[i].innerText;
+                
+            };
+        }
+        for(let i=0;i<btnOk.length;i++){
+            btnOk[i].onclick=function(){
+                UploadPost.action+=id[i].innerText;
+                for(let j =0;j<optionCategory.length;j++){
+                    if(optionCategory[j].value===idCategory[i].innerText){
+                        optionCategory[j].selected="seleted";
+                    }
+                    if(optionTag[j].value===idTag[i].innerText){
+                        optionTag[j].selected="seleted";
+                    }
+                }
             };
         }
 </script>

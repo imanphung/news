@@ -35,7 +35,7 @@ module.exports = function (passport) {
         // Facebook sẽ gửi lại chuối token và thông tin profile của user
         function (token, refreshToken, profile, done) {
             // asynchronous
-            db.query("SELECT * FROM subscriber WHERE id = "+profile._json.id,function(err,rows){
+            db.query("SELECT * FROM subscriber WHERE email = '"+profile._json.email+"'",function(err,rows){
                 if(err) return done(err);
                 // res.render('admin/adminPage/category',{category});
                 if(rows.length){
@@ -43,11 +43,11 @@ module.exports = function (passport) {
                 }else{
                     var newUser = new Object();
 
-                        newUser.id= profile._json.id,
+                        // newUser.id= profile._json.id,
                         newUser.email=profile._json.email,
                         newUser.name=profile._json.name
                     }
-                    db.query("INSERT INTO subscriber(id,email,name) VALUES('"+profile._json.id+"','"+profile._json.email+"','"+profile._json.name+"')",function(err,result){
+                    db.query("INSERT INTO subscriber(email,name) VALUES('"+profile._json.email+"','"+profile._json.name+"')",function(err,result){
                         if(err) return done(err);
                         else{
                             return done(null,newUser);

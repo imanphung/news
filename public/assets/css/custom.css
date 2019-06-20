@@ -33,6 +33,7 @@
 .show-viewlistwrite{
     display: block;
     
+    
 }
 .btnsuccess{
     margin-left:45%;
@@ -66,6 +67,7 @@
     margin: auto;
     margin-top:-20%;
     background: #fff;
+    padding: 30px;
 
 }
 .success label{

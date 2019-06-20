@@ -26,13 +26,6 @@
     <!-- Style customizer (Remove these lines please) -->
     <link rel="stylesheet" href="../../assets/css/style-customizer.css">
     <link href="#" data-style="styles" rel="stylesheet">
-    <script type="text/javascript">
-        if (window.location.hash === "#_=_"){
-        history.replaceState 
-        ? history.replaceState(null, null, window.location.href.split("#")[0])
-        : window.location.hash = "";
-}
-    </script>
 </head>
 
 <body>
@@ -181,25 +174,80 @@
         <div class="return">
             <a href="/editor" class="btn btn-success">Trở về</a>
         </div>
-        <article class="zm-post-lay-single">
-                                        <div class="zm-post-dis">
-                                            <div class="zm-post-header">
-                                                <h2 class="zm-post-title h2"><a href="blog-single-image.html"><%=post[0].title%></a></h2>
-                                            </div>
-                                            
-                                            <div class="zm-post-content" >
-                                          <%-post[0].content%>
-                                            
-                                                <div class="zm-post-meta">
-                                                    <ul>
-                                                        <li class="s-meta"><a href="#" class="zm-author">An Phung</a></li>
-                                                        <li class="s-meta"><a href="#" class="zm-date">15/5/2019</a></li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </article>
-                                  
+        <div class="zm-section bg-white ptb-70">
+    <div class="container">
+        
+        <div class="row mb-40">
+            <div class="col-md-12 col-sm-12 col-lg-12 col-xs-12">
+                <div class="section-title">
+                    <h2 class="h6 header-color inline-block uppercase">Chỉnh sửa bài viết</h2>
+                </div>
+            </div>
+        </div >
+        <form autocomplete="off" method="POST" action="/writer/updatePost/<%=post[0].id%>" enctype="multipart/form-data">
+            <div class="row">
+                <div class="col-md-12 col-sm-12 col-lg-3 col-xs-12">  
+                    <div class="form-group">
+                        <label>Tiêu đề</label>
+                        <input name="title" type="text" class="form-control" placeholder="Nhập tiêu đề..." value="<%=post[0].title%>">
+                    </div>
+                    <div class="form-group">
+                        <label>Nội dung tóm tắt</label>
+                        <input name="abstract" type="text" class="form-control" placeholder="Nhập nội dung tóm tắt..." value="<%=post[0].abstract%>">
+                    </div>
+                    <div class="form-group">
+                        <label>Ảnh</label>
+                        <input type="file" name="image">
+                    </div>
+                    <div class="form-group">
+                        <div>
+                            <label>Chuyên mục</label>
+                            <select id="inputState" name="idCategory" class="form-control">
+                                <option selected="selected">Chọn chuyên mục</option>
+                                
+                                <%category.forEach(function(rows){%>
+                                
+                                    <%if(rows.id === post[0].idCategory){%>
+                                        <option value="<%=rows.id%>" selected="selected"><%=rows.name%></option>
+                                    <%}else{%>
+                                        <option value="<%=rows.id%>"><%=rows.name%></option>
+                                    <%}%>
+                                    
+                                <%});%>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div>
+                            <label>Tag</label>
+                            <select id="inputState" name="idTag" class="form-control">
+                                <option selected="selected">Chọn Tag</option>
+                                <%tag.forEach(function(rows){%>
+                                    <%if(rows.id === post[0].idCategory){%>
+                                        <option value="<%=rows.id%>" selected="selected"><%=rows.name%></option>
+                                    <%}else{%>
+                                        <option value="<%=rows.id%>"><%=rows.name%></option>
+                                    <%}%>
+                 
+                                <%});%>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-12 col-sm-12 col-lg-12 col-xs-12 ml-100 xs-ml-150">
+                            <button type="submit" class="btn btn-primary">Lưu bài viết</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-12 col-sm-12 col-lg-9 col-xs-12">
+                    <script src="../../ckeditor/ckeditor.js"></script>
+                    <label>Nội dung</label>
+                    <textarea class="ckeditor" name="editor"><%-post[0].content%></textarea>
+                </div>
+            </div>            
+        </form>
+    </div>
+</div>
 
          <!-- Start footer top area -->
             <div class="footer-top-wrap ptb-70 bg-dark">
