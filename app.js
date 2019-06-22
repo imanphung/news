@@ -1,9 +1,9 @@
 var express = require ("express");
-const db= require("./model/model");
 const passport=require("passport");
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 const session = require('express-session');
+const flash = require('req-flash');
 
 //page
 const getIndex = require('./routers/page/index.route');
@@ -29,14 +29,20 @@ app.set("views","./views");
 
 app.use(express.static("public"));
 app.use(cookieParser()); // đọc cookie (cần cho xác thực)
-app.use(bodyParser()); // lấy thông tin từ html forms
+app.use(bodyParser.json()); // lấy thông tin từ html forms
+app.use(bodyParser.urlencoded({extended:true}));
 app.use(session({
     cookie: {maxAge: (3600 * 1000)},
-    secret: 'JackCodeHammer',
+    secret: 'Anphung',
     resave: true, saveUninitialized: false
 }));
+app.use(flash());
+
 app.use(passport.initialize());
 app.use(passport.session()); // persistent login sessions
+
+require('./config/passportlocal')(passport);
+require('./routers/page/authlocal.router')(app,passport); // Load routes truyền vào app và passport đã config ở trên
 require('./config/passport')(passport);
 require('./routers/page/auth.router')(app, passport); // Load routes truyền vào app và passport đã config ở trên
 
@@ -50,8 +56,6 @@ app.use((req, res, next) => {
         }
         next();
 });
-
-
 app.get('/logout',(req,res)=>{
     req.logOut();
     res.redirect('/');
@@ -59,7 +63,6 @@ app.get('/logout',(req,res)=>{
 
 app.use('/auth/facebook',auth);
 app.use("/",getIndex);
-
 
 app.use('/category',getCategory);
 app.use('/category-details',getCategoryDetails);

@@ -1,5 +1,7 @@
 const db = require('../../model/model');
 module.exports.getWrite=(req,res)=>{
+    var errLogin=req.flash();
+    var idWriter= req.session.user.id;
     let category,tag,posts
     db.query("SELECT * FROM category ORDER BY oder ASC",function(err,result){
         if(err) throw err;
@@ -9,10 +11,10 @@ module.exports.getWrite=(req,res)=>{
         if(err) throw err;
         tag=result;
     });
-    db.query("SELECT * FROM posts ORDER BY id ASC",function(err,result){
+    db.query("SELECT * FROM posts WHERE idWriter='"+idWriter+"' ORDER BY id ASC",function(err,result){
         if(err) throw err;
         posts=result;
-        res.render('page/writer',{category,tag,posts,login:req.session.login, user:req.session.user});
+        res.render('page/writer',{category,tag,posts,login:req.session.login, user:req.session.user,errLogin});
     });
 };
 module.exports.addPost=(req,res)=>{

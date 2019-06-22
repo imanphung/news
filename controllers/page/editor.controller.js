@@ -1,5 +1,7 @@
 const db = require('../../model/model');
 module.exports.getEditor=(req,res)=>{
+    var errLogin=req.flash();
+    var idEditor= req.session.user.id;
     var category;
     db.query("SELECT * FROM category",(err,result)=>{
         if(err) throw err;
@@ -11,10 +13,10 @@ module.exports.getEditor=(req,res)=>{
         tag = result;
     });
     var posts;
-        db.query("SELECT p.idTag AS idTag, p.idCategory AS idCategory,p.id AS idPost, p.content AS Content ,p.title AS title, w.name AS writerName, c.name AS categoryName, p.articleStatus AS articleStatus FROM posts p, editor e, category c, writer w  WHERE p.idCategory = e.idCategory && e.id=1 &&c.id= e.idCategory && p.idWriter=w.id ORDER BY p.id ASC",function(err,result){
+        db.query("SELECT p.idTag AS idTag, p.idCategory AS idCategory,p.id AS idPost, p.content AS Content ,p.title AS title, s.name AS writerName, c.name AS categoryName, p.articleStatus AS articleStatus FROM posts p, editor e, category c, subscriber s  WHERE p.idCategory = e.idCategory && e.id='"+idEditor+"' &&c.id= e.idCategory && p.idWriter=s.id ORDER BY p.id ASC",function(err,result){
             if(err) throw err;
             posts = result;
-            res.render('page/editor',{category,posts,tag,login:req.session.login, user:req.session.user});
+            res.render('page/editor',{category,posts,tag,login:req.session.login, user:req.session.user,errLogin});
     }); 
 };
 module.exports.Reject=(req,res)=>{
@@ -34,7 +36,7 @@ module.exports.View=(req,res)=>{
         res.render('page/postView',{post,login:req.session.login, user:req.session.user});
     });
 };
-module.exports.Edit=(req,res)=>{
+module.exports.addPost=(req,res)=>{
     var idPost = req.params.id;
     var idCategory = req.body.idCategory;
     var idTag = req.body.idTag;

@@ -1,4 +1,136 @@
 <%include ../adminLayout/header%>
 <%include ../adminLayout/sidebar%>
+<!-- DataTables Example -->
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+            <div class="card mb-3">
+                <div class="card-header">
+                    <i class="fas fa-list"></i>
+                    Thêm tài khoản</div>
+                <div class="card-body">
+                    <div>
+                    <form id="formDeleteCategory" method="POST" action="/admin/userlist/add">
+                    <table class="table table-bordered" width="100%" cellspacing="0">
+                        <thead align="center">
+                        <tr>
+                            <th>Họ tên</th>
+                            <th>Email</th>
+                            <th>Mật khẩu</th>
+                            <th>Cấp độ</th>
+                        </tr>
+                        </thead>
+                    
+                        <tbody align="center">
+                            <tr>
+                            <td><input name="name" type="text" class="form-control"></td>
+                            <td><input name="email" type="email" class="form-control"></td>
+                            <td><input name="password" type="text" class="form-control"></td>
+                            <td>
+                            <select name="level" id="level" class="form-control">
+                                  <option value="1">Editor</option>
+                                <option value="2">Writer</option>
+                            </select>
+                            </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div style="text-align:center">
+                        <button type="submit" class="btn btn-info">Xác nhận</button>
+                    </div>
+                    </form>
+                    </div>
+                </div>
+                <div class="card-header">
+                    <i class="fas fa-list"></i>
+                    Danh sách tài khoản</div>
+                <div class="card-body">
+                    <div>
+                    <form method="POST" action="/admin/userlist/addCategory" >
+                    <p>Phân công chuyên mục</p>
+                    <select name="idEditor" id="level" class="form-control" style="width:200px;margin-bottom:10px;">
+                    <option>Chọn tên Editor</option>
+                    <%editorlist.forEach(function(rows){%>
+                         <option value="<%=rows.id%>"><%=rows.name%></option>
+                        <%});%>
+                            </select>
+                            <select name="idCategory" id="level" class="form-control" style="width:200px;margin-bottom:10px;margin-top:-48px;margin-left:220px;">
+                            <option>Chọn chuyên mục</option>
+                            <%category.forEach(function(rows){%>
+                         <option value="<%=rows.id%>"><%=rows.name%></option>
+                        <%});%>
+                            </select>
+                        <button class="btn btn-info" style="margin-bottom:10px; margin-left:430px;margin-top:-74px;">Xác nhận</button>
+                    </form>
+                  
+                    <p>Editor</p>
+                    <table class="table table-bordered" width="100%" cellspacing="0">
+                        <thead align="center">
+    
+                        <tr>
+                            <th>Họ tên</th>
+                            <th>Email</th>
+                            <th>Chuyên mục</th>
+                            <th>Xóa</th>
+                        </tr>
+                        </thead>
+                    
+                        <tbody align="center">
+                       <%editorlist.forEach(function(rows){%>
+                        <tr>
+                           <td><%=rows.name%></td>
+                           <td><%=rows.email%></td>
+                           <%var i=0%>
+                           <%categoryEditor.forEach(function(row){%>
+                                <%if(rows.id === row.id){i++%>
+                                <td><%=row.name%></td>
+                                <%}%>  
+                           <%});%>
+                           <%if(i===0){%>
+                                <td></td>
+                                <%}%>  
+                          
+                           <td><a href="/admin/userlist/delete/<%=rows.id%>"><button type="button" class="btn btn-danger"><i class="fas fa-trash-alt"></i></button></a></td>
+                        </tr>
+                        <%});%>
+                            
+                        </tbody>
+                    </table>
+                    <p>Writer</p>
+                    <table class="table table-bordered" width="100%" cellspacing="0">
+                        <thead align="center">
+    
+                        <tr>
+                            <th>Họ tên</th>
+                            <th>Email</th>
+                            <th>Xóa</th>
+                        </tr>
+                        </thead>
+                    
+                        <tbody align="center">
+                       <%writerlist.forEach(function(rows){%>
+                        <tr>
+                           <td><%=rows.name%></td>
+                           <td><%=rows.email%></td>
+                        
+                           <td><a href="/admin/userlist/delete/<%=rows.id%>"><button type="button" class="btn btn-danger"><i class="fas fa-trash-alt"></i></button></a></td>
+                        </tr>
+                        <%});%>
+                            
+                        </tbody>
+                    </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card mb-3">
+                
+            </div>
+        </div>
+      </div>  
+</div>
 
 <% include ../adminLayout/footer%>

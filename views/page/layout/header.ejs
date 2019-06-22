@@ -27,12 +27,11 @@
     <link rel="stylesheet" href="assets/css/style-customizer.css">
     <link href="#" data-style="styles" rel="stylesheet">
     <script type="text/javascript">
-        if (window.location.hash === "#_=_"){
-        history.replaceState 
-        ? history.replaceState(null, null, window.location.href.split("#")[0])
-        : window.location.hash = "";
-}
-    </script>
+    if (window.location.hash === "#_=_"){
+    history.replaceState 
+    ? history.replaceState(null, null, window.location.href.split("#")[0])
+    : window.location.hash = "";
+    }</script>
 </head>
 
 <body>
@@ -81,7 +80,7 @@
                                 </div>
                                 <div class="user-accoint topbar-sblock">
                                 <% if(login){%>
-                                    <span><a href="/logout"><%=user.name%></a></span>
+                                    <span><a href="/logout" class="Username"><%=user.name%></a></span>
                                 <%}else{%>
                                     <span class="login-btn uppercase">Đăng nhập</span>
                                 <%}%>
@@ -108,18 +107,19 @@
                         <div class="left-wrap">
                             <div class="content-left-wrap">
                                 <div class="login-with-email"><p>Đăng nhập với Email</p></div>
-                            <form class="zm-signin-form text-left">
-                                <input type="text" class="zm-form-control username" placeholder="Username or Email">
-                                <input type="password" class="zm-form-control password" placeholder="Password">
+                            <form class="zm-signin-form text-left" action="/login" method="POST">
+                                <input type="email" name="email" class="zm-form-control username" placeholder="Username or Email">
+                                <input type="password" name="password" class="zm-form-control password" placeholder="Password">
+                                <%if(errLogin){%>
+                                    <div class="errLogin" style="text-align:center; margin-top:-15px; color:red;"><span><%=errLogin.loginMessage%></span></div>
+                                <%}%>
                                 <input type="checkbox" value=" Remember Me" class="remember"> &nbsp;Nhớ mật khẩu<br>
                                 <div class="zm-submit-box clearfix  mt-20">
                                     <button class="btn btn-login " type="submit" >Đăng nhập</button>
                                 </div>
                                 <a href="#" class="zm-forget">Quên mật khẩu ?</a>
-                              
                             </form>
-                            </div>
-                            
+                            </div>   
                         </div>
                         <div class="right-wrap">
                             <div class="login-with-email"><p>Đăng nhập với</p></div>
@@ -134,10 +134,10 @@
                         <div class="left-wrap">
                             <div class="content-left-wrap">
                                 <div class="login-with-email"><p>Tạo tài khoản</p></div>
-                            <form class="zm-signin-form text-left" method="POST" action="/register">
+                            <form class="zm-signin-form text-left" method="POST" action="/signup">
                                 <input type="email" name="email" class="zm-form-control username" placeholder="Username or Email">
-                                <input type="password" name="pw" class="zm-form-control password" placeholder="Password">
-                                <input type="password" name="rpw" class="zm-form-control password" placeholder="Repassword">
+                                <input type="password" name="password" class="zm-form-control password" placeholder="Password">
+                                <input type="password" name="repassword" class="zm-form-control password" placeholder="Repassword">
                                 <div class="zm-submit-box clearfix  mt-20">
                                     <button class="btn btn-login " type="submit" >Đăng kí</button>
                                 </div>

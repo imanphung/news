@@ -1,4 +1,49 @@
 <%include ../adminLayout/header%>
 <%include ../adminLayout/sidebar%>
-
+<div class="container">
+      <div class="row">
+        <div class="col-md-12">
+            <div class="card mb-3">
+                <div class="card-header">
+                    <i class="fas fa-list"></i>
+                    Danh sách bài viết</div>
+                <div class="card-body">
+                    <div>
+                    <form method="POST" action="/admin/userlist/addCategory" >
+                        <select name="idCategory" id="level" class="form-control" style="width:200px;margin-bottom:10px;">
+                    <option>Chọn chuyên mục</option>
+                    <%category.forEach(function(rows){%>
+                        <option value="<%=rows.id%>"><%=rows.name%></option>
+                        <%});%>
+                            </select>
+                        <button class="btn btn-info" style="margin-bottom:10px; margin-left:230px;margin-top:-74px;">Xác nhận</button>
+                    </form>
+                    <table class="table table-bordered" width="100%" cellspacing="0">
+                        <thead align="center">
+                        <tr>
+                            <th>Bài viết</th>
+                            <th>Writer</th>
+                            
+                            <th>Duyệt</th>
+                        </tr>
+                        </thead>
+                        <%posts.forEach(function(rows){%>
+                        <tbody align="center">
+                        <td><%=rows.title%></td>
+                        <td><%=rows.idWriter%></td>
+                        <%if(rows.articleStatus===1){%>
+                            <td><i class="fas fa-check-circle" style="color:green;"></td>
+                        <%}else{%>
+                            <td><a href="/admin/posts/edit/<%=rows.id%>"><button class="btn btn-info">Chọn</button></a></td>
+                        <%}%>
+                        </tbody>
+                        <%});%>
+                    </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+</div>
 <% include ../adminLayout/footer%>

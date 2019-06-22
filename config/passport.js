@@ -5,28 +5,16 @@ var configAuth = require('./auth');
 // load  user model
 var db = require('../model/model');
 module.exports = function (passport) {
-    // =========================================================================
-    // passport session setup ==================================================
-    // =========================================================================
-    // required for persistent login sessions
-    // passport needs ability to serialize and unserialize users out of session
-    // used to serialize the user for the session
     passport.serializeUser(function (user, done) {
         done(null, user);
         
     });
     // used to deserialize the user
     passport.deserializeUser(function (user, done) {
-        done(null, user)
+        done(null, user);
     });
-    // code for login (use('local-login', new LocalStategy))
-    // code for signup (use('local-signup', new LocalStategy))
-    // =========================================================================
-    // FACEBOOK ================================================================
-    // =========================================================================
+
     passport.use(new FacebookStrategy({
-            // điền thông tin để xác thực với Facebook.
-            // những thông tin này đã được điền ở file auth.js
             clientID: configAuth.facebookAuth.clientID,
             clientSecret: configAuth.facebookAuth.clientSecret,
             callbackURL: configAuth.facebookAuth.callbackURL,
@@ -43,18 +31,17 @@ module.exports = function (passport) {
                 }else{
                     var newUser = new Object();
 
-                        // newUser.id= profile._json.id,
+                        newUser.id= profile._json.id,
                         newUser.email=profile._json.email,
                         newUser.name=profile._json.name
                     }
-                    db.query("INSERT INTO subscriber(email,name) VALUES('"+profile._json.email+"','"+profile._json.name+"')",function(err,result){
+                    db.query("INSERT INTO subscriber(email,name,level) VALUES('"+profile._json.email+"','"+profile._json.name+"','0')",function(err,result){
                         if(err) return done(err);
                         else{
                             return done(null,newUser);
                         }
                         
                     });
-                 
             });
         }));
 };

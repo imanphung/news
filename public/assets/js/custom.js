@@ -1,5 +1,3 @@
-import { format } from "url";
-
 //Calendar
 document.addEventListener("DOMContentLoaded",function startTime(){
     var txtcalendar = document.getElementsByClassName("calendar");
@@ -51,10 +49,22 @@ document.addEventListener("DOMContentLoaded",function startTime(){
     //format abstract
     
 },false);
-// $(document).ready(function(){
-//     var str = $('.content-abstract').text();
-//     if(str.length >20){
-        
-//     }
-// });
+$(document).ready(function(){
+    var str = $('.Username').text();
+    if(str.length >8){
+        var s = str.substring(0,8)+'...';
+        $('.Username').html(s);
+    }
+    var errLogin = $('.errLogin').text();
+    if(errLogin.length){
+        $('.wrapper').addClass('fixed');
+        $('.login-form-wrap').addClass('show-login');
+        $('.login-form-wrap-mobile').addClass('show-login');
+        $('.fullscreen-black').addClass('show-fullscreen-black');
+        $('.login-wrap').addClass("showborder");
+        $('.register-wrap').removeClass("showborder");
+        $('.login-wrap h3').css("color","#f0442c");
+        $('.register-wrap h3').css("color","rgb(155, 155, 155)");
+    }
+});
 
