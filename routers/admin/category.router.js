@@ -1,16 +1,14 @@
 const express= require('express');
-var bodyParser = require('body-parser');
-var urlencodedParser = bodyParser.urlencoded({ extended: false });
 const controller= require('../../controllers/admin/category.controller');
 var router = express.Router();
 router.get('/',controller.category);
 router.get('/:id',controller.subcategory);
-router.post('/add',urlencodedParser,controller.addCategory);
-router.post('/edit/:id',urlencodedParser,controller.editCategory);
-router.post('/delete/:id',urlencodedParser,controller.deleteCategory);
+router.post('/add',controller.addCategory);
+router.post('/edit/:id',controller.editCategory);
+router.post('/delete/:id',controller.deleteCategory);
 
 //Subcategory
-router.post('/:idcategory/add',urlencodedParser,controller.addSubCategory);
-router.post('/:idcategory/edit/:id',urlencodedParser,controller.editSubCategory);
-router.post('/:idcategory/delete/:id',urlencodedParser,controller.deleteSubCategory);
+router.post('/:idcategory/add',controller.addSubCategory);
+router.post('/:idcategory/edit/:id',controller.editSubCategory);
+router.post('/:idcategory/delete/:id',controller.deleteSubCategory);
 module.exports = router;

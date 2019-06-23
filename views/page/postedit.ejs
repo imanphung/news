@@ -172,7 +172,7 @@
             </div>
         </header>
         <div class="return">
-            <a href="/editor" class="btn btn-success">Trở về</a>
+            <a href="/writer" class="btn btn-success">Trở về</a>
         </div>
         <div class="zm-section bg-white ptb-70">
     <div class="container">
@@ -223,7 +223,7 @@
                             <select id="inputState" name="idTag" class="form-control">
                                 <option selected="selected">Chọn Tag</option>
                                 <%tag.forEach(function(rows){%>
-                                    <%if(rows.id === post[0].idCategory){%>
+                                    <%if(rows.id === post[0].idTag){%>
                                         <option value="<%=rows.id%>" selected="selected"><%=rows.name%></option>
                                     <%}else{%>
                                         <option value="<%=rows.id%>"><%=rows.name%></option>

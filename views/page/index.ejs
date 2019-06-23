@@ -115,7 +115,7 @@
                             <!-- Start single post layout D -->
                             <article class="zm-post-lay-d clearfix">
                                     <div class="zm-post-thumb f-left">
-                                            <a href="blog-single-image.html"><img src="uploads/images/<%=posts[0].image%>" alt="img"></a>
+                                            <a href="blog-single-image.html"><img src="uploads/<%=posts[0].image%>" alt="img"></a>
                                         </div>
                                     <div class="zm-post-dis f-right">
                                         <div class="zm-post-header">
@@ -168,7 +168,7 @@
             </div>
         </div>
         <!-- End Popular News [layout A+D]  -->
-        <!-- Start Video Post [View layout A]  -->
+        <!-- Top 10 New Posts [View layout A]  -->
         <div class="video-post-area ptb-70 bg-dark">
             <div class="container">
                 <div class="row mb-40">
@@ -181,71 +181,26 @@
                 <div class="row">
                     <div class="zm-video-post-list zm-posts owl-active-3 navigator-1 clearfix">
                         <!-- Start single video post [video layout A] -->
-                        <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
-                            <div class="zm-video-post zm-video-lay-a zm-single-post">
-                                <div class="zm-video-thumb" data-dark-overlay="2.5">
-                                    <img src="uploads/images/video/1.jpg" alt="video">
-                                    <a class="video-activetor" href="https://www.youtube.com/watch?v=PsjFbwIQ8AY">
-                                        <i class="fa fa-play-circle-o"></i>
-                                    </a>
-                                </div>
-                                <div class="zm-video-info text-white">
-                                    <h2 class="zm-post-title"><a href="blog-single-video.html">Consectetur adipisicing elit sed eiusmod tempor et dolore magna.</a></h2>
-                                    <div class="zm-post-meta">
-                                        <ul>
-                                            <li class="s-meta zm-post-time">10:33 min</li>
-                                            <li class="s-meta"><a href="#" class="zm-author">Thomson Smith</a></li>
-                                            <li class="s-meta"><a href="#" class="zm-date">April 18, 2016</a></li>
-                                        </ul>
+                        <% newposts.forEach(function(rows){%>
+                            <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
+                                <div class="zm-video-post zm-video-lay-a zm-single-post">
+                                    <div class="zm-video-thumb" data-dark-overlay="2.5">
+                                        <img src="uploads/<%=rows.image%>">
+                                    </div>
+                                    <div class="zm-video-info  text-white">
+                                        <h2 class="zm-post-title"><a href="blog-single-video.html"><%=rows.title%></a></h2>
+                                        <div class="zm-post-meta">
+                                            <ul>
+                                                <li class="s-meta zm-post-time uppercase" style="font-size:12px;"><%=rows.categoryName%></li>
+                                                <li class="s-meta"><a href="#" class="zm-date"><%=rows.date%></a></li>
+    
+                                            </ul>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <!-- End single video post [video layout A] -->
-                        <!-- Start single video post [video layout A] -->
-                        <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
-                            <div class="zm-video-post zm-video-lay-a zm-single-post">
-                                <div class="zm-video-thumb" data-dark-overlay="2.5">
-                                    <img src="uploads/images/video/2.jpg" alt="video">
-                                    <a class="video-activetor" href="https://www.youtube.com/watch?v=PsjFbwIQ8AY">
-                                        <i class="fa fa-play-circle-o"></i>
-                                    </a>
-                                </div>
-                                <div class="zm-video-info  text-white">
-                                    <h2 class="zm-post-title"><a href="blog-single-video.html">Quis nostrud exercitation ullamco laboris nisi ut aliquip consequat. </a></h2>
-                                    <div class="zm-post-meta">
-                                        <ul>
-                                            <li class="s-meta zm-post-time">10:33 min</li>
-                                            <li class="s-meta"><a href="#" class="zm-author">Thomson Smith</a></li>
-                                            <li class="s-meta"><a href="#" class="zm-date">April 18, 2016</a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- End single video post [video layout A] -->
-                        <!-- Start single video post [video layout A] -->
-                        <div class="col-xs-12 hiddne-sm col-md-4 col-lg-4">
-                            <div class="zm-video-post zm-video-lay-a zm-single-post">
-                                <div class="zm-video-thumb" data-dark-overlay="2.5">
-                                    <img src="uploads/images/video/3.jpg" alt="video">
-                                    <a class="video-activetor" href="https://www.youtube.com/watch?v=PsjFbwIQ8AY">
-                                        <i class="fa fa-play-circle-o"></i>
-                                    </a>
-                                </div>
-                                <div class="zm-video-info  text-white">
-                                    <h2 class="zm-post-title"><a href="blog-single-video.html">Duis aute irure dolor in reprehenderit in voluptate velit esse.</a></h2>
-                                    <div class="zm-post-meta">
-                                        <ul>
-                                            <li class="s-meta zm-post-time">10:33 min</li>
-                                            <li class="s-meta"><a href="#" class="zm-author">Thomson Smith</a></li>
-                                            <li class="s-meta"><a href="#" class="zm-date">April 18, 2016</a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- End single video post [video layout A] -->
+                        <%});%>
+
                     </div>
                 </div>
             </div>
